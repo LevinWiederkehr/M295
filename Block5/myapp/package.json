@@ -9,10 +9,11 @@
   "scripts": {
     "test": "newman run postman_collection.json",
     "start": "node server.js",
-    "dev": "concurrently \"node server.js\" \"node wait_and_test.js\""
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "express": "^5.2.1",
+    "nodemon": "^3.1.11",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
   },

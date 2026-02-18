@@ -1,0 +1,82 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Library API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "tags": [
+    { "name": "Books", "description": "Book management" },
+    { "name": "Lends", "description": "Book lending" }
+  ],
+  "paths": {
+    "/books": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get all books",
+        "responses": { "200": { "description": "List of books" } }
+      },
+      "post": {
+        "tags": ["Books"],
+        "summary": "Create book",
+        "responses": { "201": { "description": "Book created" }, "422": { "description": "Validation error" } }
+      }
+    },
+    "/books/{isbn}": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get book by ISBN",
+        "parameters": [{ "name": "isbn", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "200": { "description": "Book" }, "404": { "description": "Not found" } }
+      },
+      "put": {
+        "tags": ["Books"],
+        "summary": "Update book",
+        "parameters": [{ "name": "isbn", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "200": { "description": "Updated" }, "404": { "description": "Not found" }, "422": { "description": "Validation error" } }
+      },
+      "patch": {
+        "tags": ["Books"],
+        "summary": "Partial update book",
+        "parameters": [{ "name": "isbn", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "200": { "description": "Updated" }, "404": { "description": "Not found" }, "422": { "description": "Validation error" } }
+      },
+      "delete": {
+        "tags": ["Books"],
+        "summary": "Delete book",
+        "parameters": [{ "name": "isbn", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "204": { "description": "Deleted" }, "404": { "description": "Not found" } }
+      }
+    },
+    "/lends": {
+      "get": {
+        "tags": ["Lends"],
+        "summary": "Get all lends",
+        "responses": { "200": { "description": "List of lends" } }
+      },
+      "post": {
+        "tags": ["Lends"],
+        "summary": "Create lend",
+        "responses": { "201": { "description": "Lend created" }, "422": { "description": "Validation error" } }
+      }
+    },
+    "/lends/{id}": {
+      "get": {
+        "tags": ["Lends"],
+        "summary": "Get lend by ID",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "200": { "description": "Lend" }, "404": { "description": "Not found" } }
+      },
+      "delete": {
+        "tags": ["Lends"],
+        "summary": "Return book",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "integer" }],
+        "responses": { "200": { "description": "Returned" }, "404": { "description": "Not found" } }
+      }
+    }
+  }
+}
